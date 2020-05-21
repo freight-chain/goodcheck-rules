@@ -1,0 +1,26 @@
+rules:
+  - id: com.example.freighttrust
+    pattern: Freight Trust
+    message: |
+      FreightTrust Corproation
+
+      Did you mean the legal entity?
+    justification:
+      - When you mean the Legal Entity
+      - The C Corporation
+    glob:
+      - app/views/**/*.html.slim
+      - config/locales/**/*.yaml
+    pass:
+      - <a>FreightTrust Corporation</a>
+    fail:
+      - <a>Freight Trust Corporation</a>
+
+
+- id: review.sider.typo.freighttrust
+  pattern:
+    - literal: Freight Trust Corporation
+      case_sensitive: true
+  message: Is this a typo for "FreightTrust Corporation"?
+  pass:
+    - FreightTrust Corporation
